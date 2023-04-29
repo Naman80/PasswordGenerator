@@ -100,7 +100,7 @@ export default function App() {
                   />
                 </View>
                 <View style={styles.inputWrapper}>
-                  <Text style={[styles.heading, {color: 'blue'}]}>
+                  <Text style={[styles.heading, styles.upperCase]}>
                     Include UpperCase
                   </Text>
                   <BouncyCheckbox
@@ -111,7 +111,7 @@ export default function App() {
                   />
                 </View>
                 <View style={styles.inputWrapper}>
-                  <Text style={[styles.heading, {color: 'green'}]}>
+                  <Text style={[styles.heading, styles.lowerCase]}>
                     Include LowerCase
                   </Text>
                   <BouncyCheckbox
@@ -122,7 +122,7 @@ export default function App() {
                   />
                 </View>
                 <View style={styles.inputWrapper}>
-                  <Text style={[styles.heading, {color: 'crimson'}]}>
+                  <Text style={[styles.heading, styles.numbers]}>
                     Include Numbers
                   </Text>
                   <BouncyCheckbox
@@ -133,7 +133,7 @@ export default function App() {
                   />
                 </View>
                 <View style={styles.inputWrapper}>
-                  <Text style={[styles.heading, {color: 'pink'}]}>
+                  <Text style={[styles.heading, styles.symbols]}>
                     Include Symbols
                   </Text>
                   <BouncyCheckbox
@@ -198,6 +198,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     paddingVertical: 2,
   },
+
+  upperCase: {color: 'blue'},
+  lowerCase: {color: 'green'},
+  numbers: {color: 'crimson'},
+  symbols: {color: 'pink'},
 
   formActions: {
     flex: 1,
