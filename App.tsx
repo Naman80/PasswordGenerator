@@ -62,7 +62,10 @@ export default function App() {
     <ScrollView keyboardShouldPersistTaps="handled">
       <SafeAreaView>
         <View style={styles.formContainer}>
-          <Text style={styles.title}>Password Generator</Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Password Generator</Text>
+          </View>
+
           <Formik
             initialValues={{passwordLength: ''}}
             validationSchema={PasswordSchema}
@@ -97,7 +100,9 @@ export default function App() {
                   />
                 </View>
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.heading}> Include UpperCase</Text>
+                  <Text style={[styles.heading, {color: 'blue'}]}>
+                    Include UpperCase
+                  </Text>
                   <BouncyCheckbox
                     fillColor="blue"
                     disableBuiltInState
@@ -106,7 +111,9 @@ export default function App() {
                   />
                 </View>
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.heading}> Include LowerCase</Text>
+                  <Text style={[styles.heading, {color: 'green'}]}>
+                    Include LowerCase
+                  </Text>
                   <BouncyCheckbox
                     fillColor="green"
                     disableBuiltInState
@@ -115,16 +122,20 @@ export default function App() {
                   />
                 </View>
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.heading}> Include numbers</Text>
+                  <Text style={[styles.heading, {color: 'crimson'}]}>
+                    Include Numbers
+                  </Text>
                   <BouncyCheckbox
-                    fillColor="red"
+                    fillColor="crimson"
                     disableBuiltInState
                     onPress={() => setNumbers(!numbers)}
                     isChecked={numbers}
                   />
                 </View>
                 <View style={styles.inputWrapper}>
-                  <Text style={styles.heading}> Include symbols</Text>
+                  <Text style={[styles.heading, {color: 'pink'}]}>
+                    Include Symbols
+                  </Text>
                   <BouncyCheckbox
                     fillColor="pink"
                     disableBuiltInState
@@ -156,9 +167,11 @@ export default function App() {
           <View style={[styles.card, styles.cardElevated]}>
             <Text style={styles.subTitle}>Result:</Text>
             <Text style={styles.description}>Long press to copy</Text>
-            <Text selectable style={styles.generatedPassword}>
-              {password}
-            </Text>
+            <View style={styles.generatedPasswordContainer}>
+              <Text selectable style={styles.generatedPassword}>
+                {password}
+              </Text>
+            </View>
           </View>
         )}
       </SafeAreaView>
@@ -168,37 +181,74 @@ export default function App() {
 
 const styles = StyleSheet.create({
   formContainer: {},
-  title: {fontSize: 24, fontWeight: 'bold'},
+  titleContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  title: {fontSize: 24, fontWeight: 'bold', margin: 10, color: 'white'},
   heading: {fontSize: 18},
   errorText: {color: 'crimson', fontSize: 15},
   inputWrapper: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    margin: 20,
+    alignContent: 'center',
   },
-  inputColumn: {},
-  inputStyle: {},
-  formActions: {},
+  inputColumn: {flex: 1, justifyContent: 'center'},
+  inputStyle: {
+    paddingHorizontal: 10,
+    borderWidth: 2,
+    paddingVertical: 2,
+  },
 
-  primaryBtn: {},
-  primaryBtnText: {},
-  secondaryBtn: {},
-  secondaryBtnText: {},
+  formActions: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 20,
+  },
+  primaryBtn: {
+    borderWidth: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    backgroundColor: 'mediumseagreen',
+  },
+  primaryBtnText: {color: 'white', fontWeight: 'bold', fontSize: 15},
+  secondaryBtn: {
+    borderWidth: 5,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    backgroundColor: 'crimson',
+  },
+  secondaryBtnText: {color: 'white', fontWeight: 'bold', fontSize: 15},
 
   card: {
     height: 150,
     borderRadius: 10,
     backgroundColor: 'white',
-    marginHorizontal: 7,
+    margin: 20,
   },
   cardElevated: {},
-  subTitle: {color: 'black', fontSize: 18, margin: 10, marginBottom: 0},
-  description: {color: 'black', fontSize: 18, margin: 10},
+  subTitle: {
+    color: 'black',
+    fontSize: 18,
+    margin: 10,
+    marginBottom: 0,
+    fontWeight: '400',
+  },
+  description: {
+    color: 'black',
+    fontSize: 18,
+    marginHorizontal: 10,
+    fontWeight: '400',
+    textDecorationLine: 'underline',
+  },
+  generatedPasswordContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   generatedPassword: {
     color: 'black',
     fontWeight: 'bold',
     fontSize: 24,
-    marginHorizontal: 100,
-    marginVertical: 10,
   },
 });
